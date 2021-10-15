@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des appartements{% endblock %}
+
+{% block body %}
+    <div class="text-center">
+        <a href="{{ path('batiment_appartement_new') }}" class="btn btn-dark text-white mb-3">
+            <i class="fa fa-plus"></i> Nouvelle appartement
+        </a>
+    </div>
+
+    <table class="table table-hover" id="myTable">
+        <thead>
+            <tr class="text-center">
+                <th>Id</th>
+                <th>Adresse</th>
+                <th>Etage</th>
+                <th>NombrePieces</th>
+                <th>Ascenceur</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for appartement in appartements %}
+            <tr class="text-center">
+                <td>{{ appartement.id }}</td>
+                <td>{{ appartement.adresse }}</td>
+                <td>{{ appartement.etage }}</td>
+                <td>{{ appartement.nombrePieces }}</td>
+                <td>{{ appartement.ascenceur ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('batiment_appartement_show', {'id': appartement.id}) }}">
+                        <i class="fa fa-fas fa-eye text-info"></i>
+                    </a>
+                    <a href="{{ path('batiment_appartement_edit', {'id': appartement.id}) }}">
+                        <i class="fa fa-fas fa-pencil-alt text-primary"></i>
+                    </a>
+                </td>
+            </tr>
+        {% else %}
+            <tr class="text-center">
+                <td colspan="6">Pas de résultats</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

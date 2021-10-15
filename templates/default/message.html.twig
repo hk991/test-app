@@ -1,0 +1,9 @@
+<div id="flash-messages">
+    {% for label, messages in app.session.flashbag.all %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label }} text-dark">
+                {{ message|trans|striptags }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+</div>

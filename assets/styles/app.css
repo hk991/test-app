@@ -1,0 +1,10 @@
+
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
+body {
+    background-color: #eee9e9;
+}
+
+.fa {
+    font-size: large;
+}

@@ -9,16 +9,45 @@
 ### Installation
 
 Veuillez finir d'installer le projet :
-``$ composer install``
 
-## Démarrage
+``- composer install``
+
+``- yarn install `` ou ``npm install``
+
+``- yarn encore dev``
+
+
+### Démarrage
 
 Démarrer le serveur
 ``php -S localhost:8000 -t public
 ``
 
+ou lancons le server web local de symfony
+
+``- php bin/console server:run``
+
+``- symfony server:start``  (si symfony/cli est installé) 
+
 Rendez-vous sur la page d'accueil. Vous devriez voir apparaître : 
 "Welcome to Symfony 4.4.32"
+
+### Configuration du projet
+
+Pour exécuter le projet et les tests vous devez démarrer un serveur Web ainsi qu'un serveur de base de données.
+
+Ajouter le fichier `.env.test.local` pour y mettre les informations de connexion à la base de données.
+
+### Mise en place de la base de données et tests
+
+``- php bin/console doctrine:database:create``
+
+``- php bin/console doctrine:schema:update --force``
+
+``- php bin/console doctrine:fixtures:load``
+
+``- php bin/phpunit``
+
 
 ## A réaliser 
 
@@ -45,6 +74,8 @@ Une fois le test terminé, merci de l'envoyer à ``narnodo@maline-immobilier.fr`
 - temps total passé sur le test
 - reste à faire
 - pistes d'amélioration dans le travail réalisé
+
+> les réponses a ces questions seront sur reponses.md
 
 #### Autre 
 

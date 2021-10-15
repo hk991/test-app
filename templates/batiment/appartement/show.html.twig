@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Appartement - {{ appartement.id }}{% endblock %}
+
+{% block body %}
+    <div class="row text-center">
+        <div class="col-lg-6 col-sm-12">
+            <a href="{{ path('batiment_appartement_index') }}" class="btn btn-dark text-white mb-3">
+                <i class="fa fa-align-left"></i> Retour à la liste
+            </a>
+        </div>
+        <div class="col-lg-6 col-sm-12">
+            {{ include('batiment/appartement/_delete_form.html.twig') }}
+        </div>
+    </div>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ appartement.id }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ appartement.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Etage</th>
+                <td>{{ appartement.etage }}</td>
+            </tr>
+            <tr>
+                <th>NombrePieces</th>
+                <td>{{ appartement.nombrePieces }}</td>
+            </tr>
+            <tr>
+                <th>Ascenceur</th>
+                <td>{{ appartement.ascenceur ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="row text-center mt-5">
+        <div class="col-12">
+            <a class="btn btn-info" href="{{ path('batiment_appartement_edit', {'id': appartement.id}) }}">
+                <i class="fa fa-pencil-alt"></i>
+                Modifier l'appartement
+            </a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_javascripts %}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        function demandeConfirmation() {
+            event.preventDefault();
+            let form = document.getElementById('form-delete');
+            swal({
+                title: 'Etes vous sure de vouloir supprimer cette appartement?',
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            }).then((willDelete) => {
+                if (willDelete) {
+                    form.submit();
+                }
+            });
+        }
+    </script>
+{% endblock %}

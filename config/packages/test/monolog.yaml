@@ -1,4 +1,5 @@
 monolog:
+    channels: [ 'appartement' ]
     handlers:
         main:
             type: fingers_crossed
@@ -10,3 +11,9 @@ monolog:
             type: stream
             path: "%kernel.logs_dir%/%kernel.environment%.log"
             level: debug
+        business_logs:
+            type: rotating_file
+            max_files: 3
+            path: '%kernel.logs_dir%/business_logs_%kernel.environment%.log'
+            channels: [ 'appartement' ]
+            level: info
